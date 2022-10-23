@@ -1,0 +1,36 @@
+# Python cache
+*.egg-info
+*.pot
+*.py[co]
+.mypy_cache/
+.tox/
+__pycache__/
+MANIFEST
+
+# Project documentation
+docs/build
+
+# Coverage and test
+.coverage
+.coverage.*
+tests/test-results/*
+
+# SQLite
+db.sqlite3*
+
+# Visual code project settings
+.vscode/
+
+# App's environment config
+.env
+.env_local
+.env_staging
+.env_beta
+.env_prod
+
+# Locally generated files
+media/
+tmp/
+
+# Vi
+*.swp

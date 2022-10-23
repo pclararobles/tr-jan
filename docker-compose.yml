@@ -1,0 +1,103 @@
+version: "3.7"
+
+services:
+
+  #---- Web service ----#
+  tr-jan:
+    build:
+      context: .
+      target: tr-jan-dev
+    image: tr-jan-dev
+    environment:
+      - TERM=xterm
+      - LC_ALL=en_US.UTF-8
+      - LANG=en_US.UTF-8
+      - LANGUAGE=en_US.UTF-8
+      - DJANGO_SETTINGS_MODULE=config.settings.dev
+    volumes:
+      - type: bind
+        source: ./
+        target: /home/appuser/tr-jan
+    ports:
+      - "8000:8000"
+    networks:
+      - default-net
+    depends_on:
+      - postgres
+      - redis
+
+  #---- Databases ----#
+  postgres:
+    image: postgres:13.4-alpine3.14
+    volumes:
+      - type: volume
+        source: postgres-recerca-data
+        target: /var/lib/postgresql/data
+    healthcheck:
+      test: pg_isready -U postgres
+      interval: 10s
+      timeout: 5s
+      retries: 5
+    ports:
+      - "5432:5432"
+    networks:
+      - default-net
+
+  redis:
+    image: redis:5.0.7
+    environment:
+      - ALLOW_EMPTY_PASSWORD=yes
+    ports:
+      - "6379:6379"
+    networks:
+      - default-net
+
+  manage:
+    image: tr-jan-dev:latest
+    environment:
+      - LC_ALL=en_US.UTF-8
+      - LANG=en_US.UTF-8
+      - LANGUAGE=en_US.UTF-8
+    volumes:
+      - type: bind
+        source: ./
+        target: /home/appuser/tr-jan
+    networks:
+      - default-net
+    depends_on:
+      - postgres
+    entrypoint: python manage.py
+
+  #---- Dev's toolbox ----#
+  flake8:
+    image: tr-jan-dev:latest
+    volumes:
+      - type: bind
+        source: ./
+        target: /home/appuser/tr-jan
+        read_only: true
+    entrypoint: flake8
+
+  black:
+    image: tr-jan-dev:latest
+    volumes:
+      - type: bind
+        source: ./
+        target: /home/appuser/tr-jan
+        read_only: true
+    entrypoint: black --config .black --check --diff .
+
+  format:
+    image: tr-jan-dev:latest
+    volumes:
+      - type: bind
+        source: ./
+        target: /home/appuser/tr-jan
+    entrypoint: black --config .black .
+
+volumes:
+  postgres-recerca-data:
+
+
+networks:
+  default-net:

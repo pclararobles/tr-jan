@@ -1,0 +1,25 @@
+# Python
+**/__pycache__
+
+# Git
+.gitignore
+.git
+
+# Docker
+Dockerfile
+docker-compose.yml
+
+# Visual code project settings
+.vscode
+
+# mypy and coverage
+tests/test-results
+.mypy_cache
+.coverage
+.coverage.*
+
+# CircleCI
+.circleci
+
+# App settings
+.env
