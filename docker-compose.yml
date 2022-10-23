@@ -29,6 +29,10 @@ services:
   #---- Databases ----#
   postgres:
     image: postgres:13.4-alpine3.14
+    environment:
+      - POSTGRES_DB=recerca
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=password
     volumes:
       - type: volume
         source: postgres-recerca-data

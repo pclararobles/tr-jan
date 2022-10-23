@@ -71,12 +71,9 @@ DJANGO_APPS = [
 THIRD_PARTY_APPS = [
     "corsheaders",
     "django_extensions",
-    "drf_spectacular",
     "rest_framework",
 ]
-LOCAL_APPS = [
-    "recerca.core.apps.CoreConfig",
-]
+LOCAL_APPS = []
 
 
 # https://docs.djangoproject.com/en/2.2/ref/settings/#installed-apps
