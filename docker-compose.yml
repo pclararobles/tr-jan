@@ -23,29 +23,7 @@ services:
     networks:
       - default-net
     depends_on:
-      - postgres
       - redis
-
-  #---- Databases ----#
-  postgres:
-    image: postgres:13.4-alpine3.14
-    environment:
-      - POSTGRES_DB=recerca
-      - POSTGRES_USER=postgres
-      - POSTGRES_PASSWORD=password
-    volumes:
-      - type: volume
-        source: postgres-recerca-data
-        target: /var/lib/postgresql/data
-    healthcheck:
-      test: pg_isready -U postgres
-      interval: 10s
-      timeout: 5s
-      retries: 5
-    ports:
-      - "5432:5432"
-    networks:
-      - default-net
 
   redis:
     image: redis:5.0.7
@@ -68,8 +46,6 @@ services:
         target: /home/appuser/tr-jan
     networks:
       - default-net
-    depends_on:
-      - postgres
     entrypoint: python manage.py
 
   #---- Dev's toolbox ----#
@@ -98,9 +74,6 @@ services:
         source: ./
         target: /home/appuser/tr-jan
     entrypoint: black --config .black .
-
-volumes:
-  postgres-recerca-data:
 
 
 networks:

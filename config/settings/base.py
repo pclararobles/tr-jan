@@ -63,7 +63,6 @@ DJANGO_APPS = [
     "django.contrib.auth",
     "django.contrib.contenttypes",
     "django.contrib.messages",
-    "django.contrib.postgres",
     "django.contrib.sessions",
     "django.contrib.staticfiles",
     "django.contrib.humanize",
@@ -86,12 +85,8 @@ INSTALLED_APPS = DJANGO_APPS + THIRD_PARTY_APPS + LOCAL_APPS
 # https://docs.djangoproject.com/en/2.2/ref/settings/#databases
 DATABASES = {
     "default": {
-        "ENGINE": "django.db.backends.postgresql",
-        "NAME": environ.get("PSQL_DB_DATABASE", "recerca"),
-        "USER": environ.get("PSQL_DB_USERNAME", "postgres"),
-        "PASSWORD": environ.get("PSQL_DB_PASSWORD", "password"),
-        "HOST": environ.get("PSQL_DB_HOST", "localhost"),
-        "PORT": environ.get("PSQL_DB_PORT", "5432"),
+        "ENGINE": "django.db.backends.sqlite3",
+        "NAME": "db.sqlite3",
     },
 }
 
@@ -205,4 +200,4 @@ CACHES = {
     }
 }
 # REDIS cache URL for health check.
-REDIS_URL = environ.get("REDIS_URL", "redis://redis:6379")
+REDIS_URL = "redis://redis:6379"
