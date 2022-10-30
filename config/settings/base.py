@@ -67,6 +67,7 @@ DJANGO_APPS = [
     "django.contrib.sessions",
     "django.contrib.staticfiles",
     "django.contrib.humanize",
+    "polls.apps.PollsConfig",
 ]
 THIRD_PARTY_APPS = [
     "corsheaders",
