@@ -13,7 +13,7 @@ from django.core.wsgi import get_wsgi_application
 from config.settings.base import root
 
 # This allows easy placement of apps within the interior application directory.
-app_path = root("home")
+app_path = root()
 
 sys.path.append(app_path)
 

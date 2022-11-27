@@ -9,6 +9,7 @@ https://docs.djangoproject.com/en/2.2/topics/settings/
 For the full list of settings and their values, see
 https://docs.djangoproject.com/en/2.2/ref/settings/
 """
+import os
 from os import environ
 from os.path import abspath, dirname, join
 from typing import List
@@ -110,17 +111,11 @@ AUTH_PASSWORD_VALIDATORS = [
 # Default login url when accessing the backoffice
 LOGIN_URL = "/admin/login/"
 
-
-# STATIC
-# ------------------------------------------------------------------------------
+# Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/2.2/howto/static-files/
-# https://docs.djangoproject.com/en/2.2/ref/settings/#static-root
-STATIC_ROOT = join(BASE_DIR, "static/")
-# https://docs.djangoproject.com/en/2.2/ref/settings/#static-url
-STATIC_URL = "/static/"
-# https://docs.djangoproject.com/en/2.2/ref/contrib/staticfiles/#std:setting-STATICFILES_DIRS
-STATICFILES_DIRS = [root("static")]
 
+STATIC_URL = "/tr-jan/static/"
+STATIC_ROOT = os.path.join(BASE_DIR, "static/")
 
 # MEDIA
 # ------------------------------------------------------------------------------
