@@ -32,7 +32,7 @@ BASE_DIR = root()
 
 # GENERAL
 # ------------------------------------------------------------------------------
-APPS_DIR = root("recerca")
+APPS_DIR = root()
 
 SECRET_KEY = environ.get("DJANGO_SECRET_KEY", "spw9i$9!lwc3!l0^8(1=7aag!pn5r*0wa_4$tllbuu8_8e+8e")
 # https://docs.djangoproject.com/en/2.2/ref/settings/#allowed-hosts
@@ -84,10 +84,7 @@ INSTALLED_APPS = DJANGO_APPS + THIRD_PARTY_APPS + LOCAL_APPS
 # ------------------------------------------------------------------------------
 # https://docs.djangoproject.com/en/2.2/ref/settings/#databases
 DATABASES = {
-    "default": {
-        "ENGINE": "django.db.backends.sqlite3",
-        "NAME": "db.sqlite3",
-    },
+    "default": {"ENGINE": "django.db.backends.sqlite3", "NAME": "db.sqlite3",},
 }
 
 
@@ -111,16 +108,16 @@ AUTH_PASSWORD_VALIDATORS = [
 ]
 
 # Default login url when accessing the backoffice
-LOGIN_URL = "/recerca/admin/login/"
+LOGIN_URL = "/admin/login/"
 
 
 # STATIC
 # ------------------------------------------------------------------------------
 # https://docs.djangoproject.com/en/2.2/howto/static-files/
 # https://docs.djangoproject.com/en/2.2/ref/settings/#static-root
-STATIC_ROOT = join(BASE_DIR, "recerca/static/")
+STATIC_ROOT = join(BASE_DIR, "static/")
 # https://docs.djangoproject.com/en/2.2/ref/settings/#static-url
-STATIC_URL = "/recerca/static/"
+STATIC_URL = "/static/"
 # https://docs.djangoproject.com/en/2.2/ref/contrib/staticfiles/#std:setting-STATICFILES_DIRS
 STATICFILES_DIRS = [root("static")]
 

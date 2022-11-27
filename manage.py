@@ -18,7 +18,7 @@ def main():
         ) from exc
 
     # This allows easy placement of apps within the interior project directory.
-    app_path = root("recerca")
+    app_path = root()
     sys.path.append(app_path)
 
     execute_from_command_line(sys.argv)

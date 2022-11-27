@@ -11,10 +11,10 @@ max-line-length = 100
 exclude =
     .git,
     */migrations/*,
-    recerca/static,
-    recerca/templates,
+    static,
+    templates,
     docs
 
 import-order-style = edited
-application-import-names = recerca config tests.unit
+application-import-names = config tests.unit
 application-package-names = django

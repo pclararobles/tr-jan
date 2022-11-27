@@ -18,8 +18,8 @@ exclude = '''
     | dist
     | docs
     | locale
-    | recerca\/static
-    | recerca\/templates
+    | static
+    | templates
   )
   | migrations   # exclude directories in any directory-tree level
   | e2e
