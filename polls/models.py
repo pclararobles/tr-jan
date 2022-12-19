@@ -3,7 +3,10 @@ from datetime import timedelta
 from django.db import models
 from django.utils import timezone
 
+#: model que defineix les preguntes disponibles a la web
+"""
 
+"""
 class Question(models.Model):
     question_text = models.CharField(max_length=200)
     pub_date = models.DateTimeField("date published")

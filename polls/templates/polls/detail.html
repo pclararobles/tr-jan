@@ -1,8 +1,14 @@
+{% comment %}
+HTML que maqueta la vista de detall que et permet votar
+{% endcomment %}
 <form action="{% url 'polls:vote' question.id %}" method="post">
 {% csrf_token %}
 <fieldset>
     <legend><h1>{{ question.question_text }}</h1></legend>
     {% if error_message %}<p><strong>{{ error_message }}</strong></p>{% endif %}
+    {% comment %}
+    Bucle que mostra cada una de les possibles respostes a la pregunta
+     {% endcomment %}
     {% for choice in question.choice_set.all %}
         <input type="radio" name="choice" id="choice{{ forloop.counter }}" value="{{ choice.id }}">
         <label for="choice{{ forloop.counter }}">{{ choice.choice_text }}</label><br>
